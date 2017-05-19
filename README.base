@@ -1,0 +1,22 @@
+Installation:
+
+```
+make
+sudo make install
+```
+
+Example code:
+
+```
+# Spaghettify from 'main.c' into 'spag.c'
+cat main.c | spaghetti > spag.c
+
+# Same as above
+spaghetti -i main.c -o spag.c
+
+# Undo spaghettification from 'spag.c'
+cat spag.c | spaghetti -d > main2.c
+
+# Same as above
+spaghetti -d -i spag.c -o main2.c
+```
