@@ -1,5 +1,5 @@
 CC=gcc
-FLAGS=-Wall -pedantic -std=c99
+FLAGS=-Wall -pedantic -std=c99 -Os
 BIN=spaghetti
 README=README.md
 

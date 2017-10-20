@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <getopt.h>
+#include <sys/stat.h>
 
 #include "spaghetti.h"
 
 #define SPAGHETTIFIER_VERSION ("spaghetti 1.0")
 
-void help(void) {
+static void help(void) {
 	printf("spaghetti - Makes your code uncompilable by replacing letters with unicode symbols that look the same!\n\n");
 	printf("Usage example:\n");
 	printf("spaghetti [(-h|--help)] [(-V|--version)] [(-v|--verbose)] [(-i|--in) file] [(-o|--out) file] [(-p|--print)] [(-e|--spaghettify)] [(-d|--despaghettify)]\n\n");
@@ -20,7 +21,7 @@ void help(void) {
 	printf("-d or --despaghettify: Undo spaghettification.\n");
 }
 
-void version(void) {
+static void version(void) {
 	printf("%s\n", SPAGHETTIFIER_VERSION);
 }
 
@@ -32,8 +33,8 @@ int main(int argc, char **argv) {
 	char opt_spaghettify = 0;
 	char opt_despaghettify = 0;
 
-	char *opt_in = 0;
-	char *opt_out = 0;
+	const char *opt_in = 0;
+	const char *opt_out = 0;
 
 	int next_option;
 	const char* const short_options = "hVvi:o:ped" ;
@@ -132,7 +133,7 @@ int main(int argc, char **argv) {
 		exit(1);
 	}
 
-	FILE *out = fopen(opt_out, "w+");
+	FILE *out = fopen(opt_out, "w");
 	if (!out) {
 		fprintf(stderr, "Cannot write '%s': ", opt_out);
 		perror(NULL);
