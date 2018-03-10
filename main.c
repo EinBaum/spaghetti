@@ -107,8 +107,8 @@ int main(int argc, char **argv) {
 
 	int selected = (opt_print + opt_spaghettify + opt_despaghettify);
 	if (selected > 1) {
-		printf("Too many options selected\n");
-		exit(0);
+		fprintf(stderr, "Too many options selected\n");
+		exit(1);
 	} else if (selected == 0) {
 		opt_spaghettify = 1;
 	}

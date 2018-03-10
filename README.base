@@ -20,3 +20,7 @@ cat spag.c | spaghetti -d > main2.c
 # Same as above
 spaghetti -d -i spag.c -o main2.c
 ```
+
+Warning #1: The output file is either created or cleared if it exists. Previous contents are lost!
+
+Warning #2: Do not use a file as both input and output file. The file contents will be deleted before the file can be spaghettified.
